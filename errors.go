@@ -9,4 +9,6 @@ var (
 	PARSE_INVALID_VALUE = errors.New("invalid value")
 	// 成功从 JSON 中解析出一个值，然后在空白字符之后还有其它字符，则返回此错误
 	PARSE_ROOT_NOT_SINGULAR = errors.New("root not sigular")
+
+	REQUIRE_NUMBER_TYPE = errors.New("require number type")
 )
