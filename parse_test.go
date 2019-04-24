@@ -382,6 +382,52 @@ func TestParseNumber(t *testing.T) {
 			jsonValue{0.0, INVALID_TYPE},
 			PARSE_INVALID_VALUE,
 		},
+		{
+			[]byte("-1.7976931348623157e+308"),
+			jsonValue{-1.7976931348623157e+308, NUMBER_TYPE},
+			nil,
+		},
+		{
+			[]byte("1.7976931348623157e+308"),
+			jsonValue{1.7976931348623157e+308, NUMBER_TYPE},
+			nil,
+		},
+		{
+			[]byte("1.0000000000000002"),
+			jsonValue{1.0000000000000002, NUMBER_TYPE},
+			nil,
+		},
+		{
+			[]byte("4.9406564584124654e-324"),
+			jsonValue{4.9406564584124654e-324, NUMBER_TYPE},
+			nil,
+		},
+		{
+			[]byte("-4.9406564584124654e-324"),
+			jsonValue{-4.9406564584124654e-324, NUMBER_TYPE},
+			nil,
+		},
+		{
+			[]byte("2.2250738585072014e-308"),
+			jsonValue{2.2250738585072014e-308, NUMBER_TYPE},
+			nil,
+		},
+		{
+			[]byte("-2.2250738585072014e-308"),
+			jsonValue{-2.2250738585072014e-308, NUMBER_TYPE},
+			nil,
+		},
+		{
+			[]byte("2.2250738585072009e-308"),
+			jsonValue{2.2250738585072009e-308, NUMBER_TYPE},
+			nil,
+		},
+		{
+			[]byte("-2.2250738585072009e-308"),
+			jsonValue{-2.2250738585072009e-308, NUMBER_TYPE},
+			nil,
+		},
+		// 以下测试不能通过
 		// {
 		// 	[]byte("1e-100000"), // 溢出
 		// 	jsonValue{0.0, INVALID_TYPE},
